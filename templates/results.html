@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Tumor Prediction Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+        background-image: url('/static/resultspage.jpg');
+        background-size: 90%;
+      }
+      ul {
+        text-align: left;
+        padding-left: 20px;
+        list-style-position: inside;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <img src="{{url_for('static', filename='test_img.jpg')}}" class="img-fluid" alt="Uploaded Image">
+          <br><br>
+          <h3>Predicted Label: {{label}}</h3>
+          <h3>Probability Score: {{probability}}</h3>
+          <br><br>
+          {% if label == 0 %}
+            <h3 class="text-success">This image is non-tumorous</h3>
+          {% else %}
+            <h3 class="text-danger">This image is tumorous</h3>
+            <h4>Please consult the below clinics and get yourself diagnosed:</h4>
+            <ul class="list-group">
+              <li class="list-group-item">NYU Langone Hospitals. 1-573-273-4443.</li>
+              <li class="list-group-item">UCSF Health-UCSF Medical Center. San Francisco, 94143-0296.</li>
+              <li class="list-group-item">New York-Presbyterian Hospital-Columbia and Cornell. 1-445-545-2492</li>
+              <li class="list-group-item">Rush University Medical Center. Chicago, IL 60612-3833.</li>
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
